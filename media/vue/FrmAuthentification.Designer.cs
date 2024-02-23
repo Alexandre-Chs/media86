@@ -31,7 +31,7 @@ namespace media.vue
         {
             this.lblUtilisateur = new System.Windows.Forms.Label();
             this.lblPwd = new System.Windows.Forms.Label();
-            this.txtPrenom = new System.Windows.Forms.TextBox();
+            this.txtUtilisateur = new System.Windows.Forms.TextBox();
             this.txtPwd = new System.Windows.Forms.TextBox();
             this.btnConnexion = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -54,12 +54,12 @@ namespace media.vue
             this.lblPwd.TabIndex = 2;
             this.lblPwd.Text = "Mot de passe";
             // 
-            // txtPrenom
+            // txtUtilisateur
             // 
-            this.txtPrenom.Location = new System.Drawing.Point(83, 12);
-            this.txtPrenom.Name = "txtPrenom";
-            this.txtPrenom.Size = new System.Drawing.Size(144, 20);
-            this.txtPrenom.TabIndex = 4;
+            this.txtUtilisateur.Location = new System.Drawing.Point(83, 12);
+            this.txtUtilisateur.Name = "txtUtilisateur";
+            this.txtUtilisateur.Size = new System.Drawing.Size(144, 20);
+            this.txtUtilisateur.TabIndex = 4;
             // 
             // txtPwd
             // 
@@ -76,6 +76,7 @@ namespace media.vue
             this.btnConnexion.TabIndex = 6;
             this.btnConnexion.Text = "Se connecter";
             this.btnConnexion.UseVisualStyleBackColor = true;
+            this.btnConnexion.Click += new System.EventHandler(this.btnConnexion_Click);
             // 
             // FrmAuthentification
             // 
@@ -84,7 +85,7 @@ namespace media.vue
             this.ClientSize = new System.Drawing.Size(250, 101);
             this.Controls.Add(this.btnConnexion);
             this.Controls.Add(this.txtPwd);
-            this.Controls.Add(this.txtPrenom);
+            this.Controls.Add(this.txtUtilisateur);
             this.Controls.Add(this.lblPwd);
             this.Controls.Add(this.lblUtilisateur);
             this.Name = "FrmAuthentification";
@@ -97,7 +98,7 @@ namespace media.vue
         #endregion
         private System.Windows.Forms.Label lblUtilisateur;
         private System.Windows.Forms.Label lblPwd;
-        private System.Windows.Forms.TextBox txtPrenom;
+        private System.Windows.Forms.TextBox txtUtilisateur;
         private System.Windows.Forms.TextBox txtPwd;
         private System.Windows.Forms.Button btnConnexion;
     }

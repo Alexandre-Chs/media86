@@ -100,6 +100,7 @@ namespace media.dal
                 }
                 command.Prepare();
                 reader = command.ExecuteReader();
+                Console.WriteLine(reader);
 
             }
             catch (Exception e)

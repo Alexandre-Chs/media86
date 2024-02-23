@@ -1,4 +1,5 @@
-﻿using media.vue;
+﻿using media.dal;
+using media.vue;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,11 +35,26 @@ namespace media.controleur
 
         public Controle()
         {
-            frmAuthentification = new FrmAuthentification(this);
             frmPersonnel = new FrmPersonnel(this);
             frmAjouterPersonnel = new FrmAjouterPersonnel(this);
             frmAjouterAbs = new FrmAjouterAbs(this);
             frmAbsences = new FrmAbsences(this);
+            frmAuthentification = new FrmAuthentification(this);
+            frmAuthentification.ShowDialog();
+        }
+
+        public bool VerifierAuthentification(string utilisateur, string motdepasse)
+        {
+            if (Access.Authentification(utilisateur, motdepasse))
+            {
+                frmAuthentification.Hide();
+                frmPersonnel.ShowDialog();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

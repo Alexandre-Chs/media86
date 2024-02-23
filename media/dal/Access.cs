@@ -12,7 +12,7 @@ namespace media.dal
         /// <summary>
         /// nom de connexion à la bdd
         /// </summary>
-        private static readonly string connectionName = "server=localhost;user id=media; password=media; database=mediatek; Sslmode=none";
+        private static readonly string connectionName = "server=localhost;user id=root; password=; database=mediatek; Sslmode=none";
 
         public static Boolean Authentification(string utilisateur, string pwd)
         {
@@ -20,10 +20,9 @@ namespace media.dal
             BddManager cursor = BddManager.GetInstance(connectionName);
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("@login", utilisateur);
-            parameters.Add("@pwd", GetStringSha256Hash(pwd));
+            parameters.Add("@pwd", GetStringSha256Hash(pwd).ToLower());
             cursor.ReqSelect(req, parameters);
-
-
+            
             if (cursor.Read())
             {
                 cursor.Close();
