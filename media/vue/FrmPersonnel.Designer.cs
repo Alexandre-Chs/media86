@@ -1,7 +1,7 @@
 ﻿
 namespace media
 {
-    partial class Media
+    partial class FrmPersonnel
     {
         /// <summary>
         /// Variable nécessaire au concepteur.

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace media
 {
-    public partial class Media : Form
+    public partial class FrmPersonnel : Form
     {
-        public Media()
+        public FrmPersonnel()
         {
             InitializeComponent();
         }

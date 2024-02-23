@@ -1,4 +1,5 @@
-﻿using System;
+﻿using media.controleur;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace media
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Media());
+            Application.Run(new Controle());
         }
     }
 }
