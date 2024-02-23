@@ -1,4 +1,5 @@
-﻿using System;
+﻿using media.controleur;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,13 +9,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace media.view
+namespace media.vue
 {
     public partial class FrmAuthentification : Form
     {
-        public FrmAuthentification()
+        Controle controle;
+
+        public FrmAuthentification(Controle controle)
         {
             InitializeComponent();
+            this.controle = controle;
         }
     }
 }

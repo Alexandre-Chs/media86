@@ -1,4 +1,5 @@
-﻿using System;
+﻿using media.controleur;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,12 @@ namespace media.vue
 {
     public partial class FrmAjouterAbs : Form
     {
-        public FrmAjouterAbs()
+        private Controle controle;
+
+        public FrmAjouterAbs(Controle controle)
         {
             InitializeComponent();
+            this.controle = controle;
         }
     }
 }

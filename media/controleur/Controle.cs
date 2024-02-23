@@ -1,5 +1,4 @@
-﻿using media.view;
-using media.vue;
+﻿using media.vue;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace media.controleur
 {
-    class Controle
+    public class Controle
     {
 
         /// <summary>
@@ -30,7 +29,16 @@ namespace media.controleur
         /// <summary>
         /// Vue pour le personnel
         /// </summary>
-        FrmPersonnel frmPersonnel; 
+        FrmPersonnel frmPersonnel;
 
+
+        public Controle()
+        {
+            frmAuthentification = new FrmAuthentification(this);
+            frmPersonnel = new FrmPersonnel(this);
+            frmAjouterPersonnel = new FrmAjouterPersonnel(this);
+            frmAjouterAbs = new FrmAjouterAbs(this);
+            frmAbsences = new FrmAbsences(this);
+        }
     }
 }

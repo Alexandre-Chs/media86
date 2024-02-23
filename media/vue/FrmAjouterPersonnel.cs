@@ -1,4 +1,5 @@
-﻿using System;
+﻿using media.controleur;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,14 +13,12 @@ namespace media.vue
 {
     public partial class FrmAjouterPersonnel : Form
     {
-        public FrmAjouterPersonnel()
+        private Controle controle;
+        public FrmAjouterPersonnel(Controle controle)
         {
             InitializeComponent();
+            this.controle = controle;
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

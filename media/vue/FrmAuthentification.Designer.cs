@@ -1,5 +1,5 @@
 ﻿
-namespace media.view
+namespace media.vue
 {
     partial class FrmAuthentification
     {

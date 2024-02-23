@@ -1,4 +1,5 @@
-﻿using System;
+﻿using media.controleur;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,12 @@ namespace media
 {
     public partial class FrmAbsences : Form
     {
-        public FrmAbsences()
+        private Controle controle;
+
+        public FrmAbsences(Controle controle)
         {
             InitializeComponent();
+            this.controle = controle;
         }
     }
 }
