@@ -154,7 +154,6 @@ namespace media.controleur
             frmAjouterAbs.ShowDialog();
         }
 
-
         /// <summary>
         /// permet de modifer l'absence
         /// </summary>
@@ -173,6 +172,60 @@ namespace media.controleur
         public void FermerAbsences()
         {
             frmAbsences.Hide();
+        }
+
+
+
+        /// <summary>
+        /// permet d'avoir les raisons d'une absence
+        /// </summary>
+        /// <returns></returns>
+
+        public List<Raison> GetLesRaisons()
+        {
+            return Access.GetLesRaisons();
+        }
+
+
+
+        /// <summary>
+        /// permet d'update une absence
+        /// </summary>
+        /// <param name="absenceAModifier"></param>
+        /// <param name="nouvelleAbsence"></param>
+        /// <param name="personnel"></param>
+        public void UpdateAbsence(Absence absenceAModifier, Absence nouvelleAbsence, Personnel personnel)
+        {
+            Access.UpdateAbsence(absenceAModifier, nouvelleAbsence);
+            FermerFrameAbsence(personnel);
+        }
+
+        /// <summary>
+        /// permet de fermer la frame absence
+        /// </summary>
+        /// <param name="personnelAbsence"></param>
+        public void FermerFrameAbsence(Personnel personnelAbsence)
+        {
+            frmAjouterAbs.ReinitialiserLesChamps();
+            frmAbsences.RemplirListeAbsences(personnelAbsence);
+            frmAjouterAbs.Hide();
+        }
+
+
+
+
+
+
+
+        /// <summary>
+        /// methode qui permet de fermer la vue et d'initialiser des
+        /// </summary>
+        /// <param name="absence"></param>
+        /// <param name="personnelAbsence"></param>
+        public void AddAbsence(Absence absence, Personnel personnelAbsence)
+        {
+            Access.AddAbsence(absence);
+            FermerFrameAbsence(personnelAbsence);
         }
     }
 }

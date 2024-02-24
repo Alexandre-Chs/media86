@@ -140,6 +140,74 @@ namespace media.dal
         }
 
 
+
+
+        /// <summary>
+        /// permet de recuperer les raisons dans la table motif de la bdd
+        /// </summary>
+        /// <returns></returns>
+        public static List<Raison> GetLesRaisons()
+        {
+            List<Raison> lesMotifs = new List<Raison>();
+            string req = "select * from motif order by idmotif";
+            BddManager curseur = BddManager.GetInstance(connectionName);
+            curseur.ReqSelect(req, null);
+            while (curseur.Read())
+            {
+                Raison motif = new Raison((int)curseur.Field("idmotif"), (string)curseur.Field("libelle"));
+                lesMotifs.Add(motif);
+            }
+            curseur.Close();
+            return lesMotifs;
+        }
+
+
+
+
+        /// <summary>
+        /// permet d'update une absence dans la bdd
+        /// </summary>
+        /// <param name="absenceAModifier"></param>
+        /// <param name="nouvelleAbsence"></param>
+        public static void UpdateAbsence(Absence absenceAModifier, Absence nouvelleAbsence)
+        {
+            string ancienneDateDebut = DateTime.Parse(absenceAModifier.DateDebut).ToString("yyyy-MM-dd");
+            string req = "update absence set datedebut = @nouveaudatedebut, idmotif = @idmotif, datefin = @datefin ";
+            req += "where idpersonnel = @idpersonnel and DATE(datedebut) = @anciennedatedebut;";
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@nouveaudatedebut", nouvelleAbsence.DateDebut);
+            parameters.Add("idmotif", nouvelleAbsence.IdMotif);
+            parameters.Add("datefin", nouvelleAbsence.DateFin);
+            parameters.Add("idpersonnel", absenceAModifier.IdPersonnel);
+            parameters.Add("@anciennedatedebut", ancienneDateDebut);
+            BddManager connection = BddManager.GetInstance(connectionName);
+            connection.ReqUpdate(req, parameters);
+            connection.Close();
+        }
+
+
+
+        /// <summary>
+        /// ajouter abs dans la bdd
+        /// </summary>
+        /// <param name="absence"></param>
+        public static void AddAbsence(Absence absence)
+        {
+            string req = "insert into absence(idpersonnel, datedebut, idmotif, datefin) ";
+            req += "values(@idpersonnel, @datedebut, @idmotif, @datefin);";
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@idpersonnel", absence.IdPersonnel);
+            parameters.Add("@datedebut", absence.DateDebut);
+            parameters.Add("@idmotif", absence.IdMotif);
+            parameters.Add("@datefin", absence.DateFin);
+            BddManager connection = BddManager.GetInstance(connectionName);
+            connection.ReqUpdate(req, parameters);
+            connection.Close();
+        }
+
+
+
+
     }
 }
 

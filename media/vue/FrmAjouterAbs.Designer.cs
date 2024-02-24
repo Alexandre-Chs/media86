@@ -68,6 +68,7 @@ namespace media.vue
             this.btnEnregistrer.TabIndex = 14;
             this.btnEnregistrer.Text = "Enregistrer";
             this.btnEnregistrer.UseVisualStyleBackColor = true;
+            this.btnEnregistrer.Click += new System.EventHandler(this.btnEnregistrer_Click);
             // 
             // lblRaison
             // 
