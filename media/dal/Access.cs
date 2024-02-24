@@ -78,6 +78,68 @@ namespace media.dal
             return lePersonnel;
         }
 
+
+
+        /// <summary>
+        /// permet de recuperer les absences
+        /// </summary>
+        /// <param name="personnel"></param>
+        /// <returns></returns>
+        public static List<Absence> RecupererLesAbs(Personnel personnel)
+        {
+            List<Absence> lesAbsences = new List<Absence>();
+            string req = "select a.datedebut, a.idmotif as 'idmotif', m.libelle as 'motif', a.datefin from absence a join motif m on a.idmotif = m.idmotif ";
+            req += "where idpersonnel = @idpersonnel order by datedebut desc;";
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@idpersonnel", personnel.IdPersonnel);
+            BddManager curseur = BddManager.GetInstance(connectionName);
+            curseur.ReqSelect(req, parameters);
+            while (curseur.Read())
+            {
+                string dateDebut = ((DateTime)curseur.Field("datedebut")).ToString("dd/MM/yyyy");
+                string dateFin = ((DateTime)curseur.Field("datefin")).ToString("dd/MM/yyyy");
+                Absence absence = new Absence((int)personnel.IdPersonnel, dateDebut, (int)curseur.Field("idmotif"), (string)curseur.Field("motif"), dateFin); lesAbsences.Add(absence);
+            }
+            curseur.Close();
+            return lesAbsences;
+        }
+
+
+
+
+        /// <summary>
+        /// supprime une absence
+        /// </summary>
+        /// <param name="absence"></param>
+        /// <param name="personnelAbsence"></param>
+        public static void SupAbsence(Absence absence, Personnel personnelAbsence)
+        {
+            string dateDebut = DateTime.Parse(absence.DateDebut).ToString("yyyy-MM-dd");
+            string req = "delete from absence where idpersonnel = @idpersonnel and DATE(datedebut) = @datedebut;";
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@idpersonnel", personnelAbsence.IdPersonnel);
+            parameters.Add("@datedebut", dateDebut);
+            BddManager connection = BddManager.GetInstance(connectionName);
+            connection.ReqUpdate(req, parameters);
+            connection.Close();
+        }
+
+
+        /// <summary>
+        /// permet de supprimer un personnel
+        /// </summary>
+        /// <param name="personnel"></param>
+        public static void SupPersonnel(Personnel personnel)
+        {
+            string req = "delete from personnel where idpersonnel = @idpersonnel";
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@idpersonnel", personnel.IdPersonnel);
+            BddManager connection = BddManager.GetInstance(connectionName);
+            connection.ReqUpdate(req, parameters);
+            connection.Close();
+        }
+
+
     }
 }
 

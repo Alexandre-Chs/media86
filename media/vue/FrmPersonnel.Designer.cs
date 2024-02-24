@@ -73,6 +73,7 @@ namespace media
             this.btnSupprimerPers.TabIndex = 3;
             this.btnSupprimerPers.Text = "Supprimer personnel";
             this.btnSupprimerPers.UseVisualStyleBackColor = true;
+            this.btnSupprimerPers.Click += new System.EventHandler(this.btnSupprimerPers_Click);
             // 
             // btnAfficherAbs
             // 

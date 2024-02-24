@@ -109,6 +109,34 @@ namespace media.dal
             }
         }
 
+
+
+        /// <summary>
+        /// methode autre que select
+        /// </summary>
+        /// <param name="chaineRequete"></param>
+        /// <param name="parameters"></param>
+        public void ReqUpdate(string chaineRequete, Dictionary<string, object> parameters)
+        {
+            try
+            {
+                command = new MySqlCommand(chaineRequete, connection);
+                if (!(parameters is null))
+                {
+                    foreach (KeyValuePair<string, object> parameter in parameters)
+                    {
+                        command.Parameters.Add(new MySqlParameter(parameter.Key, parameter.Value));
+                    }
+                }
+                command.Prepare();
+                command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
         /// <summary>
         /// retourne le contenu d'un champ
         /// </summary>

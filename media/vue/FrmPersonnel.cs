@@ -56,6 +56,12 @@ namespace media
             controle.AjouterPersonnel();
         }
 
+        /// <summary>
+        /// permet de modifier le personnel selectionné
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
         private void btnModifierPers_Click(object sender, EventArgs e)
         {
             if (dgvPersonnel.SelectedRows.Count > 0)
@@ -66,6 +72,34 @@ namespace media
             else
             {
                 MessageBox.Show("Veuillez sélectionner un membre du personnel.", "Information");
+            }
+        }
+
+
+        /// <summary>
+        /// permet de supprimer le personnel selectionne
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSupprimerPers_Click(object sender, EventArgs e)
+        {
+            if (dgvPersonnel.SelectedRows.Count > 0)
+            {
+                Personnel personnel = (Personnel)bdgPersonnel.List[bdgPersonnel.Position];
+                if (MessageBox.Show("Confirmez-vous la suppression de " + personnel.Prenom + " " + personnel.Nom + " de la liste?", "Confirmation de suppression", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    List<Absence> absences = controle.RecupererLesAbs(personnel);
+                    foreach (Absence absence in absences)
+                    {
+                        controle.SupAbsence(absence, personnel);
+                    }
+                    controle.SupPersonnel(personnel);
+                    RemplirPersonnel();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Veuillez sélectionner un personnel.", "Information");
             }
         }
     }

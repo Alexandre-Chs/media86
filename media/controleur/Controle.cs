@@ -99,5 +99,36 @@ namespace media.controleur
         }
 
 
+            /// <summary>
+            /// permet de recuperer les absences
+            /// </summary>
+            /// <param name="personnel"></param>
+            /// <returns></returns>
+        public List<Absence> RecupererLesAbs(Personnel personnel)
+        {
+            return Access.RecupererLesAbs(personnel);
+        }
+
+        /// <summary>
+        /// permet de supprimer une absence
+        /// </summary>
+        /// <param name="absence"></param>
+        /// <param name="personnelAbsence"></param>
+        public void SupAbsence(Absence absence, Personnel personnelAbsence)
+        {
+            Access.SupAbsence(absence, personnelAbsence);
+        }
+
+
+
+        /// <summary>
+        /// permet de supprimer un personnel
+        /// </summary>
+        /// <param name="personnel"></param>
+        public void SupPersonnel(Personnel personnel)
+        {
+            Access.SupPersonnel(personnel);
+        }
+
     }
 }
