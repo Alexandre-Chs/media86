@@ -130,5 +130,14 @@ namespace media.controleur
             Access.SupPersonnel(personnel);
         }
 
+
+        public void ShowAbsence(Personnel personnel)
+        {
+            frmAbsences.RemplirListeAbsences(personnel);
+            frmAbsences.Text = "MediaTek86 - Absences " + personnel.Prenom + " " + personnel.Nom;
+            frmAbsences.ShowDialog();
+        }
+
+
     }
 }

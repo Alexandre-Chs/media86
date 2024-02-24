@@ -102,5 +102,24 @@ namespace media
                 MessageBox.Show("Veuillez sélectionner un personnel.", "Information");
             }
         }
+
+
+        /// <summary>
+        /// permet d'affiche rles absences du personnel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAfficherAbs_Click(object sender, EventArgs e)
+        {
+            if (dgvPersonnel.SelectedRows.Count > 0)
+            {
+                Personnel personnel = (Personnel)bdgPersonnel.List[bdgPersonnel.Position];
+                controle.ShowAbsence(personnel);
+            }
+            else
+            {
+                MessageBox.Show("Veuillez sélectionner un membre du personnel.", "Information");
+            }
+        }
     }
 }

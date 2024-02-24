@@ -83,6 +83,7 @@ namespace media
             this.btnAfficherAbs.TabIndex = 4;
             this.btnAfficherAbs.Text = "Afficher absences";
             this.btnAfficherAbs.UseVisualStyleBackColor = true;
+            this.btnAfficherAbs.Click += new System.EventHandler(this.btnAfficherAbs_Click);
             // 
             // FrmPersonnel
             // 
