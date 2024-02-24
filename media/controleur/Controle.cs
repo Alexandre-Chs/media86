@@ -1,4 +1,5 @@
 ﻿using media.dal;
+using media.modele;
 using media.vue;
 using System;
 using System.Collections.Generic;
@@ -64,5 +65,26 @@ namespace media.controleur
                 return false;
             }
         }
+
+        /// <summary>
+        /// permet de récuperer le personnel
+        /// </summary>
+        /// <returns></returns>
+        public List<Personnel> RecupererLePersonnel()
+        {
+            return Access.RecupererLePers();
+        }
+
+
+        /// <summary>
+        /// 
+        /// permet d'ouvrir la frame ajout du personnel
+        /// </summary>
+        public void AjouterPersonnel()
+        {
+            frmAjouterPersonnel.Text = "MediaTek86 - Ajouter personnel";
+            frmAjouterPersonnel.ShowDialog();
+        }
+
     }
 }

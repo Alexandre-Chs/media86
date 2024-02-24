@@ -78,6 +78,7 @@
     <Compile Include="connexion\BddManager.cs" />
     <Compile Include="controleur\Controle.cs" />
     <Compile Include="dal\Access.cs" />
+    <Compile Include="modele\Personnel.cs" />
     <Compile Include="vue\FrmAjouterPersonnel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,8 +149,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="modele\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

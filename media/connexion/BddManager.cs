@@ -108,5 +108,26 @@ namespace media.dal
                 MessageBox.Show(e.Message);
             }
         }
+
+        /// <summary>
+        /// retourne le contenu d'un champ
+        /// </summary>
+        /// <param name="champ"></param>
+        /// <returns></returns>
+        public object Field(string champ)
+        {
+            if (reader is null)
+            {
+                return null;
+            }
+            try
+            {
+                return reader[champ];
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

@@ -13,7 +13,11 @@ namespace media
 {
     public partial class FrmAbsences : Form
     {
+        /// <summary>
+        /// instance de la classe Controle
+        /// </summary>
         private Controle controle;
+
 
         public FrmAbsences(Controle controle)
         {
