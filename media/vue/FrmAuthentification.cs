@@ -15,12 +15,21 @@ namespace media.vue
     {
         Controle controle;
 
+        /// <summary>
+        /// frame auth
+        /// </summary>
+        /// <param name="controle"></param>
         public FrmAuthentification(Controle controle)
         {
             InitializeComponent();
             this.controle = controle;
         }
 
+        /// <summary>
+        /// gestion de la connexion sur le clique button se connecter
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnConnexion_Click(object sender, EventArgs e)
         {
             if (!txtUtilisateur.Text.Equals("") && !txtPwd.Text.Equals(""))

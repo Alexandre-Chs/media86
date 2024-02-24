@@ -14,6 +14,12 @@ namespace media.dal
         /// </summary>
         private static readonly string connectionName = "server=localhost;user id=root; password=; database=mediatek; Sslmode=none";
 
+        /// <summary>
+        /// gère l'auth sur la vue auth
+        /// </summary>
+        /// <param name="utilisateur"></param>
+        /// <param name="pwd"></param>
+        /// <returns></returns>
         public static Boolean Authentification(string utilisateur, string pwd)
         {
             string req = "SELECT * FROM responsable where login=@login and pwd=@pwd;";
