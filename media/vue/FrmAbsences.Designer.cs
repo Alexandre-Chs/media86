@@ -46,6 +46,7 @@ namespace media
             this.btnRetourPersonnel.TabIndex = 9;
             this.btnRetourPersonnel.Text = "Retour liste personnel";
             this.btnRetourPersonnel.UseVisualStyleBackColor = true;
+            this.btnRetourPersonnel.Click += new System.EventHandler(this.btnRetourPersonnel_Click);
             // 
             // btnSuppAbsence
             // 
@@ -56,6 +57,7 @@ namespace media
             this.btnSuppAbsence.TabIndex = 8;
             this.btnSuppAbsence.Text = "Supprimer absence";
             this.btnSuppAbsence.UseVisualStyleBackColor = true;
+            this.btnSuppAbsence.Click += new System.EventHandler(this.btnSuppAbsence_Click);
             // 
             // btnModifAbsence
             // 
@@ -66,6 +68,7 @@ namespace media
             this.btnModifAbsence.TabIndex = 7;
             this.btnModifAbsence.Text = "Modifier absence";
             this.btnModifAbsence.UseVisualStyleBackColor = true;
+            this.btnModifAbsence.Click += new System.EventHandler(this.btnModifAbsence_Click);
             // 
             // btnAjoutAbsence
             // 
@@ -76,6 +79,7 @@ namespace media
             this.btnAjoutAbsence.TabIndex = 6;
             this.btnAjoutAbsence.Text = "Ajouter absence";
             this.btnAjoutAbsence.UseVisualStyleBackColor = true;
+            this.btnAjoutAbsence.Click += new System.EventHandler(this.btnAjoutAbsence_Click);
             // 
             // dgvAbsences
             // 

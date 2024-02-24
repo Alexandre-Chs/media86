@@ -130,7 +130,10 @@ namespace media.controleur
             Access.SupPersonnel(personnel);
         }
 
-
+        /// <summary>
+        /// voir les absences
+        /// </summary>
+        /// <param name="personnel"></param>
         public void ShowAbsence(Personnel personnel)
         {
             frmAbsences.RemplirListeAbsences(personnel);
@@ -139,5 +142,37 @@ namespace media.controleur
         }
 
 
+
+        /// <summary>
+        /// ajouter une absence
+        /// </summary>
+        /// <param name="personnelAbsence"></param>
+        public void AjouterAbsence(Personnel personnelAbsence)
+        {
+            frmAjouterAbs.Text = "Ajouter absence";
+            frmAjouterAbs.PersonnelAbsence = personnelAbsence;
+            frmAjouterAbs.ShowDialog();
+        }
+
+
+        /// <summary>
+        /// permet de modifer l'absence
+        /// </summary>
+        /// <param name="absence"></param>
+        /// <param name="personnel"></param>
+        public void ModifierAbsence(Absence absence, Personnel personnel)
+        {
+            frmAjouterAbs.Text = "Modifier absence";
+            frmAjouterAbs.ModifierAbsence(absence, personnel);
+            frmAjouterAbs.ShowDialog();
+        }
+
+        /// <summary>
+        /// retour vers personnel en fermant la frame absence
+        /// </summary>
+        public void FermerAbsences()
+        {
+            frmAbsences.Hide();
+        }
     }
 }

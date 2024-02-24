@@ -57,5 +57,70 @@ namespace media
             dgvAbsences.Columns["datefin"].HeaderText = "Date fin";
             dgvAbsences.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
+
+
+        /// <summary>
+        /// permet d'ajouter une absence, ouvre une frame
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAjoutAbsence_Click(object sender, EventArgs e)
+        {
+            controle.AjouterAbsence(personnelAbsence);
+        }
+
+
+        /// <summary>
+        /// permet de modifier une absence selectionné
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
+        private void btnModifAbsence_Click(object sender, EventArgs e)
+        {
+            if (dgvAbsences.SelectedRows.Count > 0)
+            {
+                Absence absence = (Absence)bdgAbsences.List[bdgAbsences.Position];
+                controle.ModifierAbsence(absence, personnelAbsence);
+            }
+            else
+            {
+                MessageBox.Show("Veuillez sélectionner une absence.", "Information");
+            }
+        }
+
+
+        /// <summary>
+        /// permet de supprimer une absence selectionné
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
+        private void btnSuppAbsence_Click(object sender, EventArgs e)
+        {
+            if (dgvAbsences.SelectedRows.Count > 0)
+            {
+                Absence absence = (Absence)bdgAbsences.List[bdgAbsences.Position];
+                if (MessageBox.Show("Confirmez-vous la suppression de l'absence de la liste?", "Confirmation de suppression", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    controle.SupAbsence(absence, personnelAbsence);
+                    RemplirListeAbsences(personnelAbsence);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Veuillez sélectionner une absence.", "Information");
+            }
+        }
+
+        /// <summary>
+        /// permet de retourner sur la frame du personnel 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnRetourPersonnel_Click(object sender, EventArgs e)
+        {
+            controle.FermerAbsences();
+        }
     }
 }
