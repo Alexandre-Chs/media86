@@ -205,9 +205,67 @@ namespace media.dal
             connection.Close();
         }
 
+        /// <summary>
+        /// permet de recuperer les services dans la bdd
+        /// </summary>
+        /// <returns></returns>
+        public static List<Service> RecupererLesServices()
+        {
+            List<Service> lesServices = new List<Service>();
+            string req = "select * from service order by idservice";
+            BddManager curseur = BddManager.GetInstance(connectionName);
+            curseur.ReqSelect(req, null);
+            while (curseur.Read())
+            {
+                Service service = new Service((int)curseur.Field("idservice"), (string)curseur.Field("nom"));
+                lesServices.Add(service);
+            }
+            curseur.Close();
+            return lesServices;
+        }
+
+        /// <summary>
+        /// modifier le personnel dans la bdd
+        /// </summary>
+        /// <param name="personnel"></param>
+        public static void UpdatePersonnel(Personnel personnel)
+        {
+            string req = "update personnel set idservice = @idservice, nom = @nom, prenom = @prenom, tel = @tel, mail = @mail ";
+            req += "where idpersonnel = @idpersonnel;";
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@idpersonnel", personnel.IdPersonnel);
+            parameters.Add("@idservice", personnel.IdService);
+            parameters.Add("@nom", personnel.Nom);
+            parameters.Add("@prenom", personnel.Prenom);
+            parameters.Add("@tel", personnel.Tel);
+            parameters.Add("@mail", personnel.Mail);
+            BddManager connection = BddManager.GetInstance(connectionName);
+            connection.ReqUpdate(req, parameters);
+            connection.Close();
+        }
 
 
 
+
+        /// <summary>
+        /// permet de rajouter du personnel dans la bdd
+        /// </summary>
+        /// <param name="personnel"></param>
+        public static void AddPersonnel(Personnel personnel)
+        {
+            string req = "insert into personnel(idpersonnel, idservice, nom, prenom, tel, mail) ";
+            req += "values(@idpersonnel, @idservice, @nom, @prenom, @tel, @mail);";
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@idpersonnel", personnel.IdPersonnel);
+            parameters.Add("@idservice", personnel.IdService);
+            parameters.Add("@nom", personnel.Nom);
+            parameters.Add("@prenom", personnel.Prenom);
+            parameters.Add("@tel", personnel.Tel);
+            parameters.Add("@mail", personnel.Mail);
+            BddManager connection = BddManager.GetInstance(connectionName);
+            connection.ReqUpdate(req, parameters);
+            connection.Close();
+        }
     }
 }
 

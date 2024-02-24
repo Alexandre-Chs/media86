@@ -52,6 +52,7 @@ namespace media.vue
             this.btnAnnuler.TabIndex = 23;
             this.btnAnnuler.Text = "Annuler";
             this.btnAnnuler.UseVisualStyleBackColor = true;
+            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
             // btnEnregistrer
             // 
@@ -62,6 +63,7 @@ namespace media.vue
             this.btnEnregistrer.TabIndex = 22;
             this.btnEnregistrer.Text = "Enregistrer";
             this.btnEnregistrer.UseVisualStyleBackColor = true;
+            this.btnEnregistrer.Click += new System.EventHandler(this.btnEnregistrer_Click);
             // 
             // cboService
             // 

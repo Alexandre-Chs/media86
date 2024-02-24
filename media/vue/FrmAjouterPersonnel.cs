@@ -28,6 +28,14 @@ namespace media.vue
         /// </summary>
         private int idPersonnelModifier;
         /// <summary>
+        /// objet pour les services
+        /// </summary>
+        BindingSource bdgServices = new BindingSource();
+        /// <summary>
+        /// id du personnel
+        /// </summary>
+        private int idPersonnelAModifier;
+        /// <summary>
         /// constructor
         /// </summary>
         /// <param name="controle"></param>
@@ -35,10 +43,22 @@ namespace media.vue
         {
             InitializeComponent();
             this.controle = controle;
+            RemplirServices();
         }
 
-
-
+        /// <summary>
+        /// permet de preremlplir les services 
+        /// </summary>
+        public void RemplirServices()
+        {
+            List<Service> lesServices = controle.RecupererLesServices();
+            bdgServices.DataSource = lesServices;
+            cboService.DataSource = bdgServices;
+            if (cboService.Items.Count > 0)
+            {
+                cboService.SelectedIndex = 0;
+            }
+        }
 
 
 
@@ -61,5 +81,67 @@ namespace media.vue
             }
         }
 
+        /// <summary>
+        /// vider les champs
+        /// </summary>
+        public void ViderLesChamps()
+        {
+            txtNom.Text = "";
+            txtPrenom.Text = "";
+            txtMail.Text = "";
+            txtTel.Text = "";
+            if (cboService.Items.Count > 0)
+            {
+                cboService.SelectedIndex = 0;
+            }
+        }
+
+        /// <summary>
+        /// permet d'enregister le personnel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnEnregistrer_Click(object sender, EventArgs e)
+        {
+            if (!txtNom.Text.Equals("") && !txtPrenom.Text.Equals("") && !txtMail.Text.Equals("") && !txtTel.Text.Equals("") && cboService.SelectedIndex != -1)
+            {
+                Service leService = (Service)bdgServices.List[bdgServices.Position];
+                if (modification)
+                {
+                    Personnel personnelAModifier = new Personnel(idPersonnelAModifier, leService.IdService, txtNom.Text, txtPrenom.Text, leService.Nom, txtTel.Text, txtMail.Text);
+
+                    if (MessageBox.Show("Souhaitez-vous confirmer la modification?", "Confirmation de modification", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        controle.UpdatePersonnel(personnelAModifier);
+                        modification = false;
+                    }
+                    else
+                    {
+                        controle.FermerFrameAjoutPersonnel();
+                    }
+                }
+                else
+                {
+                    int idPersonnel = 0;
+                    Personnel lePersonnel = new Personnel(idPersonnel, leService.IdService, txtNom.Text, txtPrenom.Text, leService.Nom, txtTel.Text, txtMail.Text);
+                    controle.AddPersonnel(lePersonnel);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Tous les champs doient être remplis.", "Information");
+            }
+        }
+
+        /// <summary>
+        /// permet de d'annuler l'affichage d'un nouveau personnel a ajouter
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAnnuler_Click(object sender, EventArgs e)
+        {
+            controle.FermerFrameAjoutPersonnel();
+
+        }
     }
 }

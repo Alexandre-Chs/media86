@@ -211,10 +211,27 @@ namespace media.controleur
             frmAjouterAbs.Hide();
         }
 
+        /// <summary>
+        /// permet de modifier un membre du personnel
+        /// </summary>
+        /// <param name="personnel"></param>
+        public void UpdatePersonnel(Personnel personnel)
+        {
+            Access.UpdatePersonnel(personnel);
+            FermerFrameAjoutPersonnel();
+        }
 
 
 
-
+        /// <summary>
+        /// ferme la frame personnel ajout
+        /// </summary>
+        public void FermerFrameAjoutPersonnel()
+        {
+            frmAjouterPersonnel.ViderLesChamps();
+            frmAjouterPersonnel.Hide();
+            frmPersonnel.RemplirPersonnel();
+        }
 
 
         /// <summary>
@@ -226,6 +243,22 @@ namespace media.controleur
         {
             Access.AddAbsence(absence);
             FermerFrameAbsence(personnelAbsence);
+        }
+
+
+        /// <summary>
+        /// permet d'ajouter un personnel 
+        /// </summary>
+        /// <param name="personnel"></param>
+        public void AddPersonnel(Personnel personnel)
+        {
+            Access.AddPersonnel(personnel);
+            FermerFrameAjoutPersonnel();
+        }
+
+        public List<Service> RecupererLesServices()
+        {
+            return Access.RecupererLesServices();
         }
     }
 }
