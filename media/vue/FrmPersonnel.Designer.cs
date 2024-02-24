@@ -63,6 +63,7 @@ namespace media
             this.btnModifierPers.TabIndex = 2;
             this.btnModifierPers.Text = "Modifier personnel";
             this.btnModifierPers.UseVisualStyleBackColor = true;
+            this.btnModifierPers.Click += new System.EventHandler(this.btnModifierPers_Click);
             // 
             // btnSupprimerPers
             // 

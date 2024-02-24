@@ -55,5 +55,18 @@ namespace media
         {
             controle.AjouterPersonnel();
         }
+
+        private void btnModifierPers_Click(object sender, EventArgs e)
+        {
+            if (dgvPersonnel.SelectedRows.Count > 0)
+            {
+                Personnel personnel = (Personnel)bdgPersonnel.List[bdgPersonnel.Position];
+                controle.ModifierPersonnel(personnel);
+            }
+            else
+            {
+                MessageBox.Show("Veuillez sélectionner un membre du personnel.", "Information");
+            }
+        }
     }
 }

@@ -82,9 +82,22 @@ namespace media.controleur
         /// </summary>
         public void AjouterPersonnel()
         {
-            frmAjouterPersonnel.Text = "MediaTek86 - Ajouter personnel";
+            frmAjouterPersonnel.Text = "Ajouter personnel";
             frmAjouterPersonnel.ShowDialog();
         }
+
+
+        /// <summary>
+        /// difference entre ajouter et modifier : modifier donne directement les infos de la personne à modifier.
+        /// </summary>
+        /// <param name="personnel"></param>
+        public void ModifierPersonnel(Personnel personnel)
+        {
+            frmAjouterPersonnel.Text = "Modifier personnel";
+            frmAjouterPersonnel.ModifierPersonnel(personnel);
+            frmAjouterPersonnel.ShowDialog();
+        }
+
 
     }
 }
