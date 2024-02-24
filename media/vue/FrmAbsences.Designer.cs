@@ -103,7 +103,7 @@ namespace media
             this.Controls.Add(this.btnAjoutAbsence);
             this.Controls.Add(this.dgvAbsences);
             this.Name = "FrmAbsences";
-            this.Text = "Form1";
+            this.Text = "Affichage des absences";
             ((System.ComponentModel.ISupportInitialize)(this.dgvAbsences)).EndInit();
             this.ResumeLayout(false);
 

@@ -89,7 +89,7 @@ namespace media.vue
             this.Controls.Add(this.lblPwd);
             this.Controls.Add(this.lblUtilisateur);
             this.Name = "FrmAuthentification";
-            this.Text = "Form1";
+            this.Text = "Authentification";
             this.ResumeLayout(false);
             this.PerformLayout();
 

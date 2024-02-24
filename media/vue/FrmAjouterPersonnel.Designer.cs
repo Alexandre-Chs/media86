@@ -174,7 +174,7 @@ namespace media.vue
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNom);
             this.Name = "FrmAjouterPersonnel";
-            this.Text = "Form1";
+            this.Text = "Ajouter du personnel";
             this.ResumeLayout(false);
             this.PerformLayout();
 

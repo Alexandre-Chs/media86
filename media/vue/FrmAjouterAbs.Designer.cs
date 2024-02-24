@@ -142,7 +142,7 @@ namespace media.vue
             this.Controls.Add(this.dtpDebut);
             this.Controls.Add(this.label1);
             this.Name = "FrmAjouterAbs";
-            this.Text = "Form1";
+            this.Text = "Ajouter une absence";
             this.ResumeLayout(false);
             this.PerformLayout();
 
