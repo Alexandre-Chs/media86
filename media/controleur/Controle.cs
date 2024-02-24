@@ -33,6 +33,9 @@ namespace media.controleur
         FrmPersonnel frmPersonnel;
 
 
+        /// <summary>
+        /// setup les vues
+        /// </summary>
         public Controle()
         {
             frmPersonnel = new FrmPersonnel(this);
@@ -42,7 +45,12 @@ namespace media.controleur
             frmAuthentification = new FrmAuthentification(this);
             frmAuthentification.ShowDialog();
         }
-
+        /// <summary>
+        /// verifier l'user avec l'interface visuel
+        /// </summary>
+        /// <param name="utilisateur"></param>
+        /// <param name="motdepasse"></param>
+        /// <returns></returns>
         public bool VerifierAuthentification(string utilisateur, string motdepasse)
         {
             if (Access.Authentification(utilisateur, motdepasse))
